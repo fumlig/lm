@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+set -eu
+
+# ensure first part of command is a valid program in $PATH
+lm --regex="($(compgen -c | tr '\n' '|')) .*" "$1"

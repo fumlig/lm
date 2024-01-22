@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+template="[INST] Write a commit message containing a brief summary of the changes followed by detailed description in markdown. The message should be written in imperative, present tense. Here is a diff of the changes:
+###
+{}
+### [/INST]"
+regex="(\w+\s?)+\n\n(.\n)+"
+
+git diff --cached | python3 lm.py --template="$template" --regex="$regex" #| git commit -F -
